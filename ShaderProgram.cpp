@@ -1,11 +1,25 @@
 #include <GL/glew.h>
 #include "ShaderProgram.hpp"
+#include <stdexcept>
+#include <fstream>
+#include <streambuf>
+#include <iostream>
 
-GLuint ShaderProgram::compile(GLuint type, const std::string &source) 
+GLuint ShaderProgram::compile(GLenum type, const std::string &filename) 
 {
+    //read in the shader file
+    std::ifstream inFile(filename);
+    std::string source;
+    inFile.seekg(0, std::ios::end);   
+    source.reserve(inFile.tellg());
+    inFile.seekg(0, std::ios::beg);
+    source.assign((std::istreambuf_iterator<char>(inFile)),
+                std::istreambuf_iterator<char>());
+
+
     GLuint shader = glCreateShader(type);
     const char* strSource = source.c_str();
-    glShaderSource(shader, N, &strSource, NULL);
+    glShaderSource(shader, 1, &strSource, NULL);
     glCompileShader(shader);
     GLint compiled;
     glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
@@ -22,29 +36,29 @@ GLuint ShaderProgram::compile(GLuint type, const std::string &source)
     return shader;
 }
 
-ShaderProgram::ShaderProgram(std::string& v_source, std::string& f_source)
+ShaderProgram::ShaderProgram(const std::string& v_source,const std::string& f_source)
 {
     m_vertexShader = compile(GL_VERTEX_SHADER, v_source);
     m_fragmentShader = compile(GL_FRAGMENT_SHADER, f_source);
-    m_prog = glCreateProgram();
-    glAttachShader(m_prog, m_vertexShader);
-    glAttachShader(m_prog, m_fragmentShader);
-    glLinkProgram(m_prog);
+    m_program = glCreateProgram();
+    glAttachShader(m_program, m_vertexShader);
+    glAttachShader(m_program, m_fragmentShader);
+    glLinkProgram(m_program);
 }
 
-operator ShaderProgram::GLuint() 
-{ 
-    return m_prog; 
-}
+//void ShaderProgram::operator()() 
+//{ 
+//    glUseProgram(m_program); 
+//}
 
-void operator ShaderProgram::()() 
-{ 
-    glUseProgram(m_prog); 
+void ShaderProgram::activate()
+{
+    glUseProgram(m_program);
 }
 
 ShaderProgram::~ShaderProgram() 
 {
-    glDeleteProgram(m_prog);
+    glDeleteProgram(m_program);
     glDeleteShader(m_vertexShader);
     glDeleteShader(m_fragmentShader);
 }

@@ -11,22 +11,23 @@
     // draw_skin();
 // }
 // 
+#include <string>
 #include <GL/glew.h>
 
 class ShaderProgram
 {
+
+    public:
+        ShaderProgram(const std::string& v_source,const std::string& f_source);
+        ~ShaderProgram();
+        operator GLuint() { return m_program; }; // Conversion operator for implicit conversion
+        //void operator()();
+        void activate();
+    
     private:
-        
+
         GLuint m_vertexShader;
         GLuint m_fragmentShader;
         GLuint m_program;
-
-        GLuint compile(std::string & source);
-
-    public:
-
-        ShaderProgram(std::string& v_source, std::string& f_source);
-        ~ShaderProgram();
-        operator GLuint();
-        void operator()();
+        GLuint compile(GLuint type, const std::string &source);
 };

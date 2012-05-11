@@ -3,6 +3,13 @@ cmake_minimum_required(VERSION 2.6)
 
 project(openGLDemo) 
 
+
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -std=c++11")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall -std=c++11")
+set(CMAKE_BUILD_TYPE release)
+
+set(CMAKE_VERBOSE_MAKEFILE off)
+
 find_package ( SDL REQUIRED )
 find_package(Boost COMPONENTS filesystem REQUIRED)
 find_package(OpenGL)
