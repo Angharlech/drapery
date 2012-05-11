@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 2.8)
 
 project(drapery) 
-set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeScripts)
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -std=c++11")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall -std=c++11")
