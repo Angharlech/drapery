@@ -1,7 +1,7 @@
 
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 2.8)
 
-project(openGLDemo) 
+project(drapery) 
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeScripts)
 
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -std=c++11")
@@ -20,9 +20,11 @@ include_directories( ${EIGEN3_INCLUDE_DIR}
                      ${OPENGL_INCLUDE_DIR}
                      ${Boost_INCLUDE_DIR})
 
-file(GLOB DEMO_SOURCE_FILES "*.cpp")
+file(GLOB DEMO_SOURCE_FILES "src/*.cpp")
 add_executable(demo ${DEMO_SOURCE_FILES})
 
+
+file(COPY ${PROJECT_SOURCE_DIR}/src DESTINATION ${CMAKE_BINARY_DIR})
 
 target_link_libraries(demo ${SDL_LIBRARY} 
                            SDLmain 
@@ -30,4 +32,3 @@ target_link_libraries(demo ${SDL_LIBRARY}
                            GLEW
                            ${Boost_FILESYSTEM_LIBRARY} )
 
-#target_link_libraries(demo ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} SDL) 
