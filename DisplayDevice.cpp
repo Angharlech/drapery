@@ -21,12 +21,16 @@ DisplayDevice::DisplayDevice(int width, int height, bool fullscreen) :
     const SDL_VideoInfo* initialDisplayMode = SDL_GetVideoInfo();
     m_maximumWidth = initialDisplayMode->current_w;
     m_maximumHeight = initialDisplayMode->current_h;
+   
+    //these must be done before setting video mode 
+    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24); 
+
     setVideoMode(width,height,fullscreen);
     SDL_WM_SetCaption("openGLDemo", NULL);
     SDL_Surface* screen = SDL_GetVideoSurface();
-    glViewport(0, 0, screen->w, screen->h);
-    glOrtho(0.0, (GLdouble)screen->w, (GLdouble)screen->h, 0.0, 0.0, 1.0);
-    glClearColor(0,0,0,0);
+    //glViewport(0, 0, screen->w, screen->h);
+    //glOrtho(0.0, (GLdouble)screen->w, (GLdouble)screen->h, 0.0, 0.0, 1.0);
+    //glClearColor(0,0,0,0);
 }
 
 
@@ -36,12 +40,12 @@ DisplayDevice::~DisplayDevice()
 }
 
 
-void swapBuffers()
+void DisplayDevice::swapBuffers()
 {
     SDL_GL_SwapBuffers();
 }
 
-void setVideoMode(int width, int height, bool fullscreen)
+void DisplayDevice::setVideoMode(int width, int height, bool fullscreen)
 {
     if (fullscreen)
     {
@@ -50,6 +54,10 @@ void setVideoMode(int width, int height, bool fullscreen)
     else
     {
         SDL_SetVideoMode(width, height, 32, SDL_OPENGL);
+    }
+    if (!onWindowResize.empty())
+    {
+        onWindowResize(width, height);
     }
 }
 

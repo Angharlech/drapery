@@ -1,10 +1,10 @@
+#include <iostream>
 #include "EventHandler.hpp"
 
 #include <SDL/SDL.h>
 
 
 EventHandler::EventHandler()
-    : m_running(false)
 {
 
 }
@@ -14,30 +14,19 @@ EventHandler::~EventHandler()
 
 }
 
-void EventHandler::start()
+void EventHandler::processEvents()
 {
-    m_running = true;
-    while (m_running) 
+    while (SDL_PollEvent(&m_sdlEvent))
     {
-        while (SDL_PollEvent(&m_sdlEvent))
+        if (m_sdlEvent.type == SDL_QUIT)
         {
-            if (m_sdlEvent.type == SDL_QUIT)
-            {
-                onSDLQuit();
-            }
-            if (m_sdlEvent.type == SDL_KEYDOWN)
-            {
-                processKeyPress(m_sdlEvent.key.keysym.sym);
-            }
-            onPollEvent();
-            //SDL_Delay(10);
+            onSDLQuit();
+        }
+        if (m_sdlEvent.type == SDL_KEYDOWN)
+        {
+            processKeyPress(m_sdlEvent.key.keysym.sym);
         }
     }
-}
-
-void EventHandler::exit()
-{
-    m_running = false;
 }
 
 

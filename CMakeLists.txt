@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 2.6)
 
 project(openGLDemo) 
-
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeScripts)
 
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -std=c++11")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall -std=c++11")
@@ -12,9 +12,11 @@ set(CMAKE_VERBOSE_MAKEFILE off)
 
 find_package ( SDL REQUIRED )
 find_package(Boost COMPONENTS filesystem REQUIRED)
+find_package(Eigen3)
 find_package(OpenGL)
 
-include_directories( ${SDL_INCLUDE_DIR} 
+include_directories( ${EIGEN3_INCLUDE_DIR}
+                     ${SDL_INCLUDE_DIR} 
                      ${OPENGL_INCLUDE_DIR}
                      ${Boost_INCLUDE_DIR})
 

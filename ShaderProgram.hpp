@@ -1,3 +1,6 @@
+
+#pragma once
+
 // originally derived from stackoverflow question 2795044
 // Usage:
 // void draw() { 
@@ -31,3 +34,5 @@ class ShaderProgram
         GLuint m_program;
         GLuint compile(GLuint type, const std::string &source);
 };
+
+

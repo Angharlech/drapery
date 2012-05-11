@@ -1,3 +1,4 @@
+#pragma once
 
 #include <boost/function.hpp>
 #include <SDL/SDL.h>
@@ -9,8 +10,7 @@ class EventHandler
     public:
         EventHandler();
         ~EventHandler();
-        void start();
-        void exit();
+        void processEvents();
 
         boost::function<void()> onPollEvent;
         boost::function<void()> onKeyReturn;
@@ -21,6 +21,5 @@ class EventHandler
     private:
         void processKeyPress(int key);
         SDL_Event m_sdlEvent;
-        bool m_running;
 };
 

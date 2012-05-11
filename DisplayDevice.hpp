@@ -1,7 +1,6 @@
-#ifndef DISPLAY_DEVICE
-#define DISPLAY_DEVICE
+#pragma once
+#include <boost/function.hpp>
 
-void setVideoMode(int width, int height, bool fullscreen);
 void toggleFullscreen();
 void swapBuffers();
 
@@ -12,6 +11,9 @@ class DisplayDevice
         DisplayDevice(int width, int height, bool fullscreen);
         ~DisplayDevice();
         void toggleFullscreen();
+        void swapBuffers();
+        void setVideoMode(int width, int height, bool fullscreen);
+        boost::function<void(const int& width, const int& height)> onWindowResize;
     private:
         int m_preferredWidth;
         int m_preferredHeight;
@@ -19,4 +21,3 @@ class DisplayDevice
         int m_maximumHeight;
 };
 
-#endif //DISPLAY_DEVICE
