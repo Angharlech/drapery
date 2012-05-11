@@ -5,7 +5,6 @@ project(openGLDemo)
 
 find_package ( SDL REQUIRED )
 find_package(Boost COMPONENTS filesystem REQUIRED)
-#find_package(GLUT)
 find_package(OpenGL)
 
 include_directories( ${SDL_INCLUDE_DIR} 
@@ -19,6 +18,7 @@ add_executable(demo ${DEMO_SOURCE_FILES})
 target_link_libraries(demo ${SDL_LIBRARY} 
                            SDLmain 
                            ${OPENGL_LIBRARIES}
+                           GLEW
                            ${Boost_FILESYSTEM_LIBRARY} )
 
 #target_link_libraries(demo ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} SDL) 

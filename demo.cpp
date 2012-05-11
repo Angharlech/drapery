@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     //connect up the components
     eventHandler.onPollEvent = boost::bind(&Renderer::update, &renderer);
     renderer.onRenderComplete = boost::bind(swapBuffers);
-    eventHandler.onKeyF12 = boost::bind(toggleFullscreen);
+    eventHandler.onKeyF12 = boost::bind(&DisplayDevice::toggleFullscreen, &display);
     eventHandler.onKeyQ = boost::bind(&EventHandler::exit, &eventHandler);
     eventHandler.onSDLQuit = boost::bind(&EventHandler::exit, &eventHandler);
     eventHandler.onKeyReturn = boost::bind(&EventHandler::exit, &eventHandler);

@@ -1,12 +1,14 @@
 #include "Renderer.hpp"
 
-#include <SDL/SDL_opengl.h>
-#include <GL/gl.h>
-#include <SDL/SDL.h>
+#include <GL/glew.h>
 
 Renderer::Renderer()
 {
-
+    GLenum err = glewInit();
+    if (GLEW_OK != err)
+    {
+        //error!
+    }
 }
 
 Renderer::~Renderer()

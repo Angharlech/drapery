@@ -11,6 +11,12 @@ class DisplayDevice
         DisplayDevice();
         DisplayDevice(int width, int height, bool fullscreen);
         ~DisplayDevice();
+        void toggleFullscreen();
+    private:
+        int m_preferredWidth;
+        int m_preferredHeight;
+        int m_maximumWidth;
+        int m_maximumHeight;
 };
 
 #endif //DISPLAY_DEVICE
