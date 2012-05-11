@@ -1,7 +1,6 @@
 #version 330
 
-layout(location = 0) in vec4 position;
-layout(location = 1) in vec4 colorIn;
+layout(location = 0) in vec3 position;
 
 smooth out vec4 vertexColor;
 
@@ -11,8 +10,9 @@ uniform mat4 perspectiveTransform;
 
 void main()
 {
-    vec4 totalOffset = vec4(cos(time), sin(time), 0.0, 0.0);
-    vec4 cameraPos = position + totalOffset;
+    vec4 totalOffset = vec4(cos(time), sin(time), -20.0, 0.0);
+    vec4 pos = vec4(position,1.0);
+    vec4 cameraPos = pos + totalOffset;
     gl_Position = perspectiveTransform*cameraPos;
-    vertexColor = colorIn;
+    vertexColor = vec4(1.0,1.0,1.0,1.0);
 }

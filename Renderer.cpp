@@ -11,109 +11,6 @@
 const std::string strVertexShader("basic3D.vert");
 const std::string strFragmentShader("basicColour.frag");
 
-const float vertexData[] = {
-    0.25f,  0.25f, -1.25f, 1.0f,
-    0.25f, -0.25f, -1.25f, 1.0f,
-    -0.25f,  0.25f, -1.25f, 1.0f,
-
-    0.25f, -0.25f, -1.25f, 1.0f,
-    -0.25f, -0.25f, -1.25f, 1.0f,
-    -0.25f,  0.25f, -1.25f, 1.0f,
-
-    0.25f,  0.25f, -2.75f, 1.0f,
-    -0.25f,  0.25f, -2.75f, 1.0f,
-    0.25f, -0.25f, -2.75f, 1.0f,
-
-    0.25f, -0.25f, -2.75f, 1.0f,
-    -0.25f,  0.25f, -2.75f, 1.0f,
-    -0.25f, -0.25f, -2.75f, 1.0f,
-
-    -0.25f,  0.25f, -1.25f, 1.0f,
-    -0.25f, -0.25f, -1.25f, 1.0f,
-    -0.25f, -0.25f, -2.75f, 1.0f,
-
-    -0.25f,  0.25f, -1.25f, 1.0f,
-    -0.25f, -0.25f, -2.75f, 1.0f,
-    -0.25f,  0.25f, -2.75f, 1.0f,
-
-    0.25f,  0.25f, -1.25f, 1.0f,
-    0.25f, -0.25f, -2.75f, 1.0f,
-    0.25f, -0.25f, -1.25f, 1.0f,
-
-    0.25f,  0.25f, -1.25f, 1.0f,
-    0.25f,  0.25f, -2.75f, 1.0f,
-    0.25f, -0.25f, -2.75f, 1.0f,
-
-    0.25f,  0.25f, -2.75f, 1.0f,
-    0.25f,  0.25f, -1.25f, 1.0f,
-    -0.25f,  0.25f, -1.25f, 1.0f,
-
-    0.25f,  0.25f, -2.75f, 1.0f,
-    -0.25f,  0.25f, -1.25f, 1.0f,
-    -0.25f,  0.25f, -2.75f, 1.0f,
-
-    0.25f, -0.25f, -2.75f, 1.0f,
-    -0.25f, -0.25f, -1.25f, 1.0f,
-    0.25f, -0.25f, -1.25f, 1.0f,
-
-    0.25f, -0.25f, -2.75f, 1.0f,
-    -0.25f, -0.25f, -2.75f, 1.0f,
-    -0.25f, -0.25f, -1.25f, 1.0f,
-
-
-
-
-    0.0f, 0.0f, 1.0f, 1.0f,
-    0.0f, 0.0f, 1.0f, 1.0f,
-    0.0f, 0.0f, 1.0f, 1.0f,
-
-    0.0f, 0.0f, 1.0f, 1.0f,
-    0.0f, 0.0f, 1.0f, 1.0f,
-    0.0f, 0.0f, 1.0f, 1.0f,
-
-    0.8f, 0.8f, 0.8f, 1.0f,
-    0.8f, 0.8f, 0.8f, 1.0f,
-    0.8f, 0.8f, 0.8f, 1.0f,
-
-    0.8f, 0.8f, 0.8f, 1.0f,
-    0.8f, 0.8f, 0.8f, 1.0f,
-    0.8f, 0.8f, 0.8f, 1.0f,
-
-    0.0f, 1.0f, 0.0f, 1.0f,
-    0.0f, 1.0f, 0.0f, 1.0f,
-    0.0f, 1.0f, 0.0f, 1.0f,
-
-    0.0f, 1.0f, 0.0f, 1.0f,
-    0.0f, 1.0f, 0.0f, 1.0f,
-    0.0f, 1.0f, 0.0f, 1.0f,
-
-    0.5f, 0.5f, 0.0f, 1.0f,
-    0.5f, 0.5f, 0.0f, 1.0f,
-    0.5f, 0.5f, 0.0f, 1.0f,
-
-    0.5f, 0.5f, 0.0f, 1.0f,
-    0.5f, 0.5f, 0.0f, 1.0f,
-    0.5f, 0.5f, 0.0f, 1.0f,
-
-    1.0f, 0.0f, 0.0f, 1.0f,
-    1.0f, 0.0f, 0.0f, 1.0f,
-    1.0f, 0.0f, 0.0f, 1.0f,
-
-    1.0f, 0.0f, 0.0f, 1.0f,
-    1.0f, 0.0f, 0.0f, 1.0f,
-    1.0f, 0.0f, 0.0f, 1.0f,
-
-    0.0f, 1.0f, 1.0f, 1.0f,
-    0.0f, 1.0f, 1.0f, 1.0f,
-    0.0f, 1.0f, 1.0f, 1.0f,
-
-    0.0f, 1.0f, 1.0f, 1.0f,
-    0.0f, 1.0f, 1.0f, 1.0f,
-    0.0f, 1.0f, 1.0f, 1.0f,
-
-};
-
-
 GLuint positionBufferObject;
 GLuint vao;
 GLuint timeLocation;
@@ -127,19 +24,24 @@ Renderer::Renderer(int width, int height, std::vector< std::unique_ptr<Renderabl
     glViewport(0, 0, width, height);
     
     //initialise perspectiveTransform
-    float fFrustumScale = 1.0f; float fzNear = 0.5f; float fzFar = 3.0f;
+    float fFrustumScale = 1.0f; float fzNear = 0.1f; float fzFar = 100.0f;
     m_perspectiveTransform.set(fFrustumScale, fzNear, fzFar, width, height);
-    
+
+    //initialise all the openGL extensions    
     GLenum returnCode = glewInit();
     if ( returnCode != GLEW_OK)
     {
         //error!
     }
 
-    
     glGenBuffers(1, &positionBufferObject); //create a buffer object, store in global variable
     glBindBuffer(GL_ARRAY_BUFFER, positionBufferObject); //bind to context (?)
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW); //alloc some memory of sizeof(vertexData) then copy in vertexData
+   
+    const std::vector<float>& vertices = m_objects[0]->getVertexVector();
+    const float* vertexPointer = &vertices[0];
+
+    //glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW); //alloc some memory of sizeof(vertexData) then copy in vertexData
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float)*vertices.size(), vertexPointer, GL_STATIC_DRAW); //alloc some memory of sizeof(vertexData) then copy in vertexData
     glBindBuffer(GL_ARRAY_BUFFER, 0); //usually best to unbind what you bind as a cleanup
     initialiseShaders(); // my function
     glGenVertexArrays(1, &vao);
@@ -199,15 +101,16 @@ void Renderer::update()
     
     glBindBuffer(GL_ARRAY_BUFFER, positionBufferObject);  //rebind our vertex array
     glEnableVertexAttribArray(0); //enable location 0 of vertex shader input
-    glEnableVertexAttribArray(1); //enable location 1 of vertex shader input
-    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0); //position input
-    size_t colorData = sizeof(vertexData)/2;
-    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (void*)colorData); //color input
-
-    glDrawArrays(GL_TRIANGLES, 0, 36); //draw the triangle(s) start index, num of entries
+    //glEnableVertexAttribArray(1); //enable location 1 of vertex shader input
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0); //position input
+    //size_t colorData = sizeof(vertexData)/2;
+    //glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (void*)colorData); //color input
+    
+    const std::vector<float>& vertices = m_objects[0]->getVertexVector();
+    glDrawArrays(GL_TRIANGLES, 0, vertices.size()); //draw the triangle(s) start index, num of entries
 
     glDisableVertexAttribArray(0); //clean up
-    glDisableVertexAttribArray(1); //clean up
+    //glDisableVertexAttribArray(1); //clean up
     glUseProgram(0); //clean up
 
     //onRenderComplete();
