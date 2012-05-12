@@ -5,7 +5,7 @@
 class RenderableObject
 {
     public:
-        RenderableObject(std::vector<float>const& vertices):m_vertices(vertices){std::cout << "RENDERABLEOBJECT init" << std::endl;}
+        RenderableObject(std::vector<float>const& vertices):m_vertices(vertices){}
         ~RenderableObject(){}
         RenderableObject(const RenderableObject& o){std::cout << "RENDERABLEOBJECT copy!!!" << std::endl;}
         std::vector<float> getVertexVector(){return m_vertices;}

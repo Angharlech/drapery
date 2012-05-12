@@ -26,6 +26,7 @@ std::unique_ptr<RenderableObject> loadCollada(const std::string &filename)
 {
     using boost::property_tree::ptree;
     ptree pt;
+    //This throws an exception which we need to catch
     read_xml(filename, pt);
 
     std::string comments = pt.get<std::string>("COLLADA.asset.contributor.comments");

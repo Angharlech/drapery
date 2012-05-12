@@ -9,6 +9,11 @@ GLuint ShaderProgram::compile(GLenum type, const std::string &filename)
 {
     //read in the shader file
     std::ifstream inFile(filename);
+    if (!inFile.is_open())
+    {
+        std::cout << "ERROR: could not open shader file" << std::endl;
+        return 0;
+    }
     std::string source;
     inFile.seekg(0, std::ios::end);   
     source.reserve(inFile.tellg());

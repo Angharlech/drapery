@@ -8,8 +8,8 @@
 
 
 
-const std::string strVertexShader("basic3D.vert");
-const std::string strFragmentShader("basicColour.frag");
+const std::string strVertexShader("shaders/basic3D.vert");
+const std::string strFragmentShader("shaders/basicColour.frag");
 
 GLuint positionBufferObject;
 GLuint vao;
@@ -107,7 +107,7 @@ void Renderer::update()
     //glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (void*)colorData); //color input
     
     const std::vector<float>& vertices = m_objects[0]->getVertexVector();
-    glDrawArrays(GL_TRIANGLES, 0, vertices.size()); //draw the triangle(s) start index, num of entries
+    glDrawArrays(GL_POINTS, 0, vertices.size()); //draw the triangle(s) start index, num of entries
 
     glDisableVertexAttribArray(0); //clean up
     //glDisableVertexAttribArray(1); //clean up
